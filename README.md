@@ -18,8 +18,8 @@ The purpose of HApiDoc is to provide a set of components that cover the above li
 
 ### HApiDoc Architecture
 HApiDoc consists of 2 main components that run as Docker containers:
-- HApiDocIndexer: This component aims to create the dataset that will be used from CLAMS, apply CLAMS on the dataset and store the results in MongoDB.
-- HApiDocWeb: This is the web service for HApiDoc. It shows results on a neat web page.
+- [HApiDocIndexer](https://github.com/HotelsDotCom/hapidoc-indexer): This component aims to create the dataset that will be used from CLAMS, apply CLAMS on the dataset and store the results in MongoDB.
+- [HApiDocWeb](https://github.com/HotelsDotCom/hapidoc-web): This is the web service for HApiDoc. It shows results on a neat web page.
 
 ![HApiDoc architecture.](hapidoc-architecture.png)
 
@@ -36,7 +36,7 @@ docker-compose up
 ```
 
 ### Running (vs linked mongodb container)
-This will make use of a linked mongodb container that's running locally. In this case, you need to run HApiDocIndexer locally as well to index data to mongodb in order to see any results in the website.
+This will make use of a linked mongodb container that's running locally. In this case, you need to run [HApiDocIndexer](https://github.com/HotelsDotCom/hapidoc-indexer) locally as well to index data to mongodb in order to see any results in the website.
 
 ```
 # You need to run mongo first using the command below:
@@ -53,7 +53,7 @@ url            | Description
 `/calls`       | Displays methods that have been indexed.
 
 ## Contact
-If you would like to ask any questions about or discuss HApiDOC please contact [a member of the project team](https://github.com/orgs/HotelsDotCom/teams/hapidoc-committers/members).
+If you would like to ask any questions about or discuss HApiDoc please contact [a member of the project team](https://github.com/orgs/HotelsDotCom/teams/hapidoc-committers/members).
 
 ## Credits
 Created by [Nikos Katirtzis](https://github.com/nikos912000) with thanks to  [Elliot West](https://github.com/teabot), [Jose Nuñez Izu](https://github.com/jmnunezizu), Miguel Novais Pimenta, and [Tom Wilkinson](https://github.com/https://github.com/wilkotom).
