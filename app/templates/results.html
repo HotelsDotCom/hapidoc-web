@@ -1,0 +1,106 @@
+<!--
+Copyright (C) 2018 Expedia Group.
+//Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+HApiDoc
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css">
+{% endblock %}
+
+{% block page_content %}
+    <div class="hapidoc-logo">
+        <a href="/"><img id="hapidoc-logo-img" src= {{ url_for('static', filename = 'hapidoc.png') }}></a>
+    </div>
+    <div class="search-form">
+        <form method="post" role="form">
+            {{ form.search_form }}<button type="submit" class="btn btn-default" id="search-btn">
+            <span type="button" class="glyphicon glyphicon-search search-button" type="submit"></span>
+            </button>
+        </form>
+    </div>
+
+    <div class="results-group">
+    {% for result in data %}
+        <div class="result-info">
+            <div class="project-info"><span class="glyphicon glyphicon-folder-open project-icon"></span><span>{{result['project']}} / {{ result['repo']}}</span></div>
+            <div class="source-info"><span class="glyphicon glyphicon glyphicon-link source-link"></span><span><a target="_blank" href="{{ result['bitbucket_server_url']}}">{{ result['display_path']}}</a></span></div>
+            <div class="method-info"><span class="glyphicon glyphicon-record method-icon" title="Target Method (method where the snippet is placed)"></span><span>{{result['method']}}</span></div>
+            <div class="support-info"><span class="glyphicon glyphicon-thumbs-up support-icon" title="Support (how many clients call the same API methods)"></span><span>{{result['support']}}</span></div>
+
+            {% if result['also-calls']|length > 0 %}
+              <div class="also-calls" style="cursor: pointer; cursor: hand;" onclick="showHide({{loop.index}})")>
+                <span id="glright{{loop.index}}" style="display: block;">
+                  <span class="glyphicon glyphicon-chevron-right also-calls-icon"></span>also calls
+                </span>
+                <span id="gldown{{loop.index}}" style="display: none;">
+                  <span class="glyphicon glyphicon-chevron-down also-calls-icon"></span>also calls
+                </span>
+              </div>
+            {% endif %}
+            <div id="additional-calls-info{{loop.index}}" class="additional-calls-info{{loop.index}}" style="display: none;">
+            {% for call in result['also-calls'] %}
+                <div class="additional-call-info"><span></span><a href="{{  url_for('search_results', query=call) }}">{{ call }}</a></div>
+            {% endfor %}
+            </div>
+        </div>
+        {{ result['content']|safe }}
+    {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+    {{ super() }}
+<script>
+$(function() {
+    $.ajax({
+        url: '{{ url_for("autocomplete") }}'
+        }).done(function (data) {
+            $('#search-form-input').autocomplete({
+                source: data.json_list,
+                minLength: 2
+            });
+        });
+    });
+</script>
+<script>
+  $(document).ready(function () {
+	$(".highlighttable").wrap("<div class='table-responsive'></div>");
+});
+</script>
+<script>
+    function showHide(id) {
+    if (document.getElementById('additional-calls-info' + id).style.display == 'block'){
+        document.getElementById('additional-calls-info' + id).style.display = 'none';
+        document.getElementById('glright' + id).style.display = 'block';
+        document.getElementById('gldown' + id).style.display = 'none';
+    }
+    else {
+        document.getElementById('additional-calls-info' + id).style.display = 'block';
+        document.getElementById('glright' + id).style.display = 'none';
+        document.getElementById('gldown' + id).style.display = 'block';
+    }
+}
+</script>
+<script>
+    $(".support-icon").tooltip()
+    $(".method-icon").tooltip()
+</script>
+<script type=text/javascript src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
+{% endblock %}

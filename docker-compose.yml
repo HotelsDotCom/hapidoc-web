@@ -1,0 +1,12 @@
+hapidocweb:
+  build: .
+  stdin_open: true
+  tty: true
+  ports:
+      - "8080:8080"
+  environment:
+    MONGO_DB_HOST: "<mongo-host>"
+    MONGO_DB_PORT: "27017"
+    HAPIDOC_WEB_HOST: "0.0.0.0"
+    HAPIDOC_WEB_PORT: "8080"
+    HAPIDOC_WEB_PASS: "12345"

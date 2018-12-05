@@ -1,0 +1,175 @@
+/*
+Copyright (C) 2018 Expedia Group.
+//Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+.container {
+    max-width: 960px;
+}
+
+.search-form {
+    height: 35px;
+    margin: 20px 0px;
+    text-align: center;
+}
+
+.search-form #search-form-input {
+    width: 70%;
+    height: 35px;
+    padding-left: 5px;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-color: #ccc;
+}
+
+.search-form > form > button {
+    border-radius: 0px;
+    border-width: 0.5px;
+    height: 35px;
+    vertical-align: inherit;
+}
+
+.results-group {
+    margin: 40px auto;
+}
+
+.hapidoc-logo {
+    width: 38%;
+    margin: 60px auto 20px auto;
+    text-align: center;
+}
+
+#hapidoc-logo-img {
+    width: 100%;
+}
+
+.code .highlight > pre {
+    background-color: white !important;
+    border-radius: 0px;
+    word-wrap: normal;
+}
+
+.highlighttable {
+    width: 100%;
+    table-layout: fixed;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.linenodiv > pre {
+    background: #fafafa;
+    color: #ccc;
+    user-select: none;
+    border: solid #ccc;
+    border-width: 1px 0px 1px 1px;
+    border-radius: 0px;
+    text-align: right;
+    word-wrap: normal;
+}
+
+.table-responsive {
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.linenodiv pre code {
+    white-space: pre;
+}
+
+.linenos {
+    width: 40px;
+    vertical-align: top;
+}
+
+.project-icon {
+    margin-right: 10px;
+    vertical-align: text-top;
+}
+
+.source-link {
+    margin-right: 10px;
+}
+
+.method-icon {
+    margin-right: 10px;
+    vertical-align: text-top;
+}
+
+.support-icon {
+    margin-right: 10px;
+    vertical-align: text-top;
+}
+
+.also-calls-icon {
+    margin-right: 10px;
+    vertical-align: text-top;
+}
+
+.result-info {
+    border-width: 1px 1px 0px 1px;
+    border-style: dashed;
+    border-color: #ccc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px 20px;
+    background-color: #f5f5f5;
+}
+
+.project-info {
+    font-size: 14px;
+    color: #666;
+    display: block;
+}
+
+.source-info {
+    font-size: 14px;
+    color: #666;
+    display: block;
+}
+
+.method-info {
+    font-size: 14px;
+    color: #666;
+    display: block;
+}
+
+.support-info {
+    font-size: 14px;
+    color: #666;
+    display: block;
+}
+
+.also-calls {
+    font-size: 14px;
+    color: #666;
+    display: block;
+}
+
+.additional-call-info {
+    font-size: 12px;
+    color: blue;
+    display: block;
+    padding-left: 24px;
+}
+
+.source-info > a {
+    word-wrap: break-word;
+    vertical-align: top;
+}
+
+.ui-autocomplete {
+    max-height: 220px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
